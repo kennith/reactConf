@@ -12,6 +12,8 @@ import {
 } from 'react-navigation';
 
 import Schedule from './Schedule';
+import ScheduleDetail from './ScheduleDetail';
+import About from './About';
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -30,7 +32,7 @@ class HomeScreen extends React.Component {
         />
         <Button title="About" accessibilityLabel="Navigate to learn about this app." 
           color="royalblue"
-          onPress={() => {console.log('test'); }}
+          onPress={() => navigate('About')}
         />
       </View>
     );    
@@ -44,10 +46,17 @@ const RootStack = StackNavigator(
     },
     Schedule: {
       screen: Schedule,
+    },
+    ScheduleDetail: {
+      screen: ScheduleDetail,
+    },
+    About: {
+      screen: About,
     }
   },
   {
-    initialRouteName: 'Schedule',
+    // initialRouteName: 'Home',
+    initialRouteName: 'ScheduleDetail',
   }
 );
 
