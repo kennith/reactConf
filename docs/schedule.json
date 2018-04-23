@@ -1,0 +1,34 @@
+{
+	"schedule": [
+		{
+			"id": 1,
+			"time": "0800",
+			"speaker": "Alice",
+			"topic": "Keynote"	
+		},
+		{
+			"id": 2,
+			"time": "0900",
+			"speaker": "Bob",
+			"topic": "React"	
+		},
+		{
+			"id": 3,
+			"time": "1000",
+			"speaker": "Cathay",
+			"topic": "Laravel"	
+		},
+		{
+			"id": 4,
+			"time": "1100",
+			"speaker": "Diana",
+			"topic": "Open Source"	
+		},
+		{
+			"id": 5,
+			"time": "1200",
+			"speaker": "Eliza",
+			"topic": "Community"	
+		}
+	]
+}
