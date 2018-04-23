@@ -5,6 +5,7 @@ import {
   View, 
   ActivityIndicator,
   FlatList,
+  TouchableHighlight,
   } from 'react-native';
 
 // Schedule URL: https://kennith.github.io/reactConf/schedule.json
@@ -48,8 +49,10 @@ export default class Schedule extends React.Component {
       <View>
         <FlatList
           data={this.state.dataSource}
-          renderItem={({item}) => <Text style={styles.item}>{item.time} - {item.topic} by {item.speaker}</Text>}
+          renderItem={({item, separators}) => <TouchableHighlight onPress={()=> { console.log('test') }}><Text>{item.speaker}</Text></TouchableHighlight>}
+          // renderItem={({item}) => <Text style={styles.item}>{item.time} - {item.topic} by {item.speaker}</Text>}
           keyExtractor={(item, index) => item.id}
+          onPress={() => { console.log('pressed!')}}
         />
       </View>  
     );
