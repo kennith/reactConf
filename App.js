@@ -1,13 +1,29 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { 
+  StyleSheet, 
+  Text, 
+  View, 
+  Image,
+  Button 
+  } from 'react-native';
+
+import {
+  StackNavigator,
+} from 'react-navigation';
 
 export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Text>Changes you make will automatically reload.</Text>
-        <Text>Shake your phone to open the developer menu.</Text>
+        <Image source={require('./img/react-logo.png')} />
+        <Button title="Schedule" accessibilityLabel="Navigate to list of schedule."
+          onPress={{}}
+          color="navy"
+        />
+        <Button title="About" accessibilityLabel="Navigate to learn about this app." 
+          color="royalblue"
+          onPress={{}}
+        />
       </View>
     );
   }
@@ -16,8 +32,15 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: 'lightgray',
     alignItems: 'center',
     justifyContent: 'center',
   },
+  text: {
+    color: 'darkslategray'
+  },
+  hero: {
+    flex: 1,
+    paddingLeft: '10px',
+  }
 });
