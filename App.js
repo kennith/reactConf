@@ -11,23 +11,52 @@ import {
   StackNavigator,
 } from 'react-navigation';
 
-export default class App extends React.Component {
+import Schedule from './Schedule';
+
+class HomeScreen extends React.Component {
+  static navigationOptions = {
+    title: 'reactConf',
+  };
+
   render() {
+    const { navigate } = this.props.navigation;
+    
     return (
       <View style={styles.container}>
         <Image source={require('./img/react-logo.png')} />
         <Button title="Schedule" accessibilityLabel="Navigate to list of schedule."
-          onPress={{}}
+          onPress={() => navigate('Schedule')}
           color="navy"
         />
         <Button title="About" accessibilityLabel="Navigate to learn about this app." 
           color="royalblue"
-          onPress={{}}
+          onPress={() => {console.log('test'); }}
         />
       </View>
-    );
+    );    
   }
-}
+};
+
+const RootStack = StackNavigator(
+  {
+    Home: {
+      screen: HomeScreen,
+    },
+    Schedule: {
+      screen: Schedule,
+    }
+  },
+  {
+    initialRouteName: 'Schedule',
+  }
+);
+
+
+export default class App extends React.Component {
+  render() {
+    return <RootStack />;
+  }
+};
 
 const styles = StyleSheet.create({
   container: {
