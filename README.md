@@ -7,3 +7,8 @@ This project was bootstrapped with [Create React Native App](https://github.com/
 ![Home](docs/Home.png "Home")
 ![Schedule](docs/Schedule.png)
 ![ScheduleDetail](/docs/ScheduleDetail-1.png)
+
+## Build
+
+1. npm install
+2. npm run watch
