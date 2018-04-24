@@ -19,25 +19,20 @@ export default class ScheduleDetail extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = { isLoading: true }
-    this.data =  {
-      "id": "1",
-      "time": "0800",
-      "speaker": "Alice",
-      "topic": "Keynote",
-      "email": 'alice@reactjs.org',
-    };
+    console.log(this.props.navigation.state);
+    const { params } = this.props.navigation.state;
+    const id = params ? params.id : "1";
+
+    this.state = { isLoading: true, id: id }
   }
 
   componentDidMount() {
-    this.setState({isLoading: false});
-    return;
-    return fetch('https://kennith.github.io/reactConf/1.json')
+    return fetch('https://kennith.github.io/reactConf/'+this.state.id+'.json')
       .then((response) => response.json())
       .then((responseJson) => {
         this.setState({
           isLoading: false,
-          dataSource: responseJson.speaker,
+          dataSource: responseJson,
         }, function() {
 
         })
@@ -48,6 +43,7 @@ export default class ScheduleDetail extends React.Component {
   }
 
   render() {
+    
     if(this.state.isLoading) {
       return (
         <View style={styles.container}>
@@ -59,12 +55,12 @@ export default class ScheduleDetail extends React.Component {
     return (
       <View style={styles.container}>
         <Image 
-          source={{uri: 'https://www.gravatar.com/avatar/'+md5.hex_md5(this.data.speaker)+'?s=400&d=robohash'}}
+          source={{uri: 'https://www.gravatar.com/avatar/'+md5.hex_md5(this.state.dataSource.speaker)+'?s=400&d=robohash'}}
           style={styles.speakerPic}
         />
-        <Text style={styles.speaker}>{this.data.speaker}</Text>
-        <Text style={styles.topic}>{this.data.topic}</Text>
-        <Text style={styles.time}>{this.data.time}</Text>
+        <Text style={styles.speaker}>{this.state.dataSource.speaker}</Text>
+        <Text style={styles.topic}>{this.state.dataSource.topic}</Text>
+        <Text style={styles.time}>{this.state.dataSource.time}</Text>
       </View>  
     );
 

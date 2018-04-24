@@ -55,8 +55,7 @@ const RootStack = StackNavigator(
     }
   },
   {
-    // initialRouteName: 'Home',
-    initialRouteName: 'Schedule',
+    initialRouteName: 'Home',
   }
 );
 

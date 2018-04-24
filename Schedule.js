@@ -9,6 +9,15 @@ import {
   } from 'react-native';
 
 // Schedule URL: https://kennith.github.io/reactConf/schedule.json
+import {
+  StackNavigator,
+} from 'react-navigation';
+
+import ScheduleDetail from './ScheduleDetail';
+
+const App = StackNavigator({
+  ScheduleDetail: { screen: ScheduleDetail },
+});
 
 export default class Schedule extends React.Component {
 	static navigationOptions = {
@@ -37,6 +46,8 @@ export default class Schedule extends React.Component {
   }
 
   render() {
+    const { navigate } = this.props.navigation;
+
     if(this.state.isLoading) {
       return (
         <View style={styles.container}>
@@ -49,7 +60,7 @@ export default class Schedule extends React.Component {
       <View>
         <FlatList
           data={this.state.dataSource}
-          renderItem={({item, separators}) => <TouchableHighlight onPress={()=> { console.log('test') }}><Text>{item.speaker}</Text></TouchableHighlight>}
+          renderItem={({item, separators}) => <TouchableHighlight onPress={()=> { console.log('test'); navigate('ScheduleDetail', { id: item.id })}} underlayColor='skyblue'><Text style={styles.item}>{item.time} - {item.topic} {item.speaker}</Text></TouchableHighlight>}
           // renderItem={({item}) => <Text style={styles.item}>{item.time} - {item.topic} by {item.speaker}</Text>}
           keyExtractor={(item, index) => item.id}
           onPress={() => { console.log('pressed!')}}
@@ -65,6 +76,8 @@ export default class Schedule extends React.Component {
 }
 
 const styles = StyleSheet.create({
+  thItem: {
+  },
   container: {
     flex: 1,
     alignItems: 'center',
